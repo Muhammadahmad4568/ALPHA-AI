@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="alpha-token" content="__ALPHA_TOKEN__">
+<title>Alpha AI</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%23070910' stroke='%232dd4bf' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='10' fill='%232dd4bf'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body data-state="idle">
+<div id="banner" role="alert"></div>
+
+<header class="top">
+  <div class="brand"><div class="logo"><i></i></div><div><b>Alpha AI</b><small id="brainTxt">starting…</small></div></div>
+  <div class="pills">
+    <span class="pill" id="connPill"><span class="dot"></span><span id="connTxt">Connecting…</span></span>
+    <span class="pill" id="lockPill" title="Voice lock">🔒 <span id="lockTxt">–</span></span>
+    <span class="pill" id="wakePill" title="Wake word">🎙 <span id="wakeTxt">say “Alpha …”</span></span>
+    <span class="pill sys" title="CPU · RAM · Alpha's own memory"><span id="sysTxt">–</span></span>
+  </div>
+  <div class="actions">
+    <button class="btn tog" id="btnListen" aria-pressed="true">🎙 <span>Listening</span></button>
+    <button class="btn tog" id="btnVoice" aria-pressed="true">🔊 <span>Voice on</span></button>
+    <button class="btn" id="btnStop" title="Stop speaking">⏹</button>
+    <button class="btn" id="btnSettings" title="Microphone & audio settings">⚙</button>
+  </div>
+</header>
+
+<main class="grid">
+  <aside class="panel left">
+    <h2>Execution <span class="hint" id="execHint">idle</span></h2>
+    <div id="exec" class="exec"><div class="empty">No task running.<br>Try “Alpha, open Task Manager”.</div></div>
+    <h3>Recent tasks</h3>
+    <div id="taskList" class="tasklist"></div>
+    <h2 class="mt">System</h2>
+    <div class="sysrow"><span>CPU</span><div class="bar"><i id="cpuBar"></i></div><b id="cpuTxt">–</b></div>
+    <div class="sysrow"><span>RAM</span><div class="bar"><i id="ramBar"></i></div><b id="ramTxt">–</b></div>
+    <div class="kv"><span>Active window</span><b id="winTxt">–</b></div>
+    <div class="kv"><span>Screen time today</span><b id="stTxt">–</b></div>
+  </aside>
+
+  <section class="stage">
+    <div class="orbwrap"><canvas id="orb" aria-hidden="true"></canvas></div>
+    <div class="state" id="stateName">IDLE</div>
+    <div class="sub" id="stateSub">Say “Alpha …” or type below</div>
+    <div class="caption" id="caption" dir="auto"></div>
+
+    <div class="mic">
+      <div class="meter"><div class="fill" id="micFill"></div><div class="thr" id="micThr" title="Noise-gate threshold"></div></div>
+      <div class="microw"><span class="gate" id="gateChip">–</span><span id="micTxt">–</span><span id="ftTxt" title="Sounds ignored: gate / empty / no wake word">false triggers 0</span></div>
+    </div>
+    <div class="auth" id="authCard">🔒 Voice lock: waiting…</div>
+
+    <form class="cmd" id="cmdForm" autocomplete="off">
+      <input id="cmdInput" maxlength="500" placeholder="Type a command (no wake word needed)…" dir="auto" aria-label="Command">
+      <button class="btn primary" type="submit">Send</button>
+    </form>
+    <div class="chips" id="chips"></div>
+  </section>
+
+  <aside class="panel right">
+    <div class="tabs" role="tablist">
+      <button class="tab on" data-tab="feed" role="tab">Activity</button>
+      <button class="tab" data-tab="console" role="tab">Console</button>
+    </div>
+    <div id="feed" class="feed" role="log" aria-live="polite"></div>
+    <div id="console" class="console" hidden></div>
+  </aside>
+</main>
+
+<div id="drawer" class="drawer" hidden>
+  <div class="dhead"><b>Microphone & audio</b><button class="btn" id="dClose">✕</button></div>
+  <label>Noise gate threshold <b id="gateVal">–</b> dBFS
+    <input type="range" id="gateSlider" min="-75" max="-20" step="1" value="-55"></label>
+  <label>Gain <b id="gainVal">–</b>×
+    <input type="range" id="gainSlider" min="1" max="30" step="0.5" value="3"></label>
+  <label class="chk"><input type="checkbox" id="autoGain"> Auto gain</label>
+  <div class="drow"><button class="btn" id="btnCal">↻ Recalibrate mic</button><button class="btn" id="btnReset">Reset counters</button></div>
+  <p class="note" id="devTxt"></p>
+  <p class="note">Voice lock enrollment: <code>python main.py enroll</code></p>
+</div>
+
+<div id="modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="mText">
+  <div class="dlg"><h3>Please confirm</h3><p id="mText"></p>
+    <div class="row"><button class="btn" id="mNo">No, cancel</button><button class="btn danger" id="mYes">Yes, do it</button></div></div>
+</div>
+<div id="toast" role="status"></div>
+<script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+# Custom tool example. To enable: copy this file to tools/custom/my_tools.py  (any name ending in .py)
+# Restart Alpha, then check with:  python main.py tools
+from core.registry import tool
+
+
+@tool("coin_flip", "Flip a coin and say heads or tails.", agent="Fun", fast=True,
+      triggers=[r"^(?:flip|toss) a coin"])          # "Alpha, flip a coin" now works without the LLM
+def coin_flip(ctx) -> str:
+    import random
+    ctx.step("Flipping the coin")          # shows up as a step in the dashboard's Execution panel
+    return random.choice(["Heads", "Tails"])
+
+
+@tool("temperature_convert", "Convert a temperature between Celsius and Fahrenheit.",
+      params={"value": {"type": "number"}, "to": {"type": "string", "enum": ["celsius", "fahrenheit"]}},
+      required=["value", "to"], agent="Fun", fast=True,
+      triggers=[r"convert (?P<value>-?[\d.]+)\s*(?:degrees)?\s*(?:celsius|fahrenheit)?\s*to (?P<to>celsius|fahrenheit)"])
+def temperature_convert(ctx, value, to) -> str:
+    v = float(value)
+    return f"{v * 9 / 5 + 32:.1f} degrees Fahrenheit" if to == "fahrenheit" else f"{(v - 32) * 5 / 9:.1f} degrees Celsius"
+
+
+# Things ctx gives you:  ctx.step("text")   ctx.svc.pc / .memory / .web / .whatsapp / .n8n   ctx.confirmed
+# confirm=True asks yes/no first. fast=True + triggers=[regex] let a plain phrase run it with no LLM call
+# (named regex groups become the tool's arguments). Without triggers the LLM can still choose the tool.

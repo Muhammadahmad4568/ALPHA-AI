@@ -1,0 +1,176 @@
+"""DRAFT migrated from C:\Users\User\OneDrive\Desktop\Alpha_AI2\Dashboard.py. Review each wrapper, then rename this file to .py to enable it."""
+import importlib.util
+from core.registry import tool
+
+_LEGACY_PATH = 'C:\\Users\\User\\OneDrive\\Desktop\\Alpha_AI2\\Dashboard.py'
+_mod = None
+
+
+def _legacy():
+    global _mod
+    if _mod is None:
+        spec = importlib.util.spec_from_file_location('legacy_Dashboard', _LEGACY_PATH)
+        _mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(_mod)
+    return _mod
+
+
+@tool('legacy_fmt_dur', 'Legacy function fmt_dur from Dashboard.py.', params={"sec": {"type": "number"}}, required=["sec"], agent='Legacy tools')
+def legacy_fmt_dur(ctx, sec) -> str:
+    ctx.step('Running legacy function fmt_dur')
+    kwargs = {k: v for k, v in {"sec": sec}.items() if v is not None}
+    return str(_legacy().fmt_dur(**kwargs))
+
+
+@tool('legacy_md_escape', 'Legacy function md_escape from Dashboard.py.', params={"text": {"type": "string"}}, required=["text"], agent='Legacy tools')
+def legacy_md_escape(ctx, text) -> str:
+    ctx.step('Running legacy function md_escape')
+    kwargs = {k: v for k, v in {"text": text}.items() if v is not None}
+    return str(_legacy().md_escape(**kwargs))
+
+
+@tool('legacy_live', '@st.fragment(run_every=...) on current Streamlit, experimental_fragment on older, no-op otherwise.', params={"run_every": {"type": "number"}}, required=["run_every"], agent='Legacy tools')
+def legacy_live(ctx, run_every) -> str:
+    ctx.step('Running legacy function live')
+    kwargs = {k: v for k, v in {"run_every": run_every}.items() if v is not None}
+    return str(_legacy().live(**kwargs))
+
+
+@tool('legacy_wide_button', 'Legacy function wide_button from Dashboard.py.', params={"label": {"type": "string"}}, required=["label"], agent='Legacy tools')
+def legacy_wide_button(ctx, label) -> str:
+    ctx.step('Running legacy function wide_button')
+    kwargs = {k: v for k, v in {"label": label}.items() if v is not None}
+    return str(_legacy().wide_button(**kwargs))
+
+
+@tool('legacy_embed', 'st.iframe on current Streamlit; components.iframe on versions that predate it.', params={"url": {"type": "string"}, "height": {"type": "integer"}}, required=["url", "height"], agent='Legacy tools')
+def legacy_embed(ctx, url, height) -> str:
+    ctx.step('Running legacy function embed')
+    kwargs = {k: v for k, v in {"url": url, "height": height}.items() if v is not None}
+    return str(_legacy().embed(**kwargs))
+
+
+@tool('legacy_sync', 'Push a backend-side change into a widget, but never overwrite what the user just set.', params={"key": {"type": "string"}, "value": {"type": "string"}}, required=["key", "value"], agent='Legacy tools')
+def legacy_sync(ctx, key, value) -> str:
+    ctx.step('Running legacy function sync')
+    kwargs = {k: v for k, v in {"key": key, "value": value}.items() if v is not None}
+    return str(_legacy().sync(**kwargs))
+
+
+@tool('legacy_get_state', '(client, snapshot, status) with status in connected | reconnecting | offline | unauthorized.', params={}, required=[], agent='Legacy tools')
+def legacy_get_state(ctx) -> str:
+    ctx.step('Running legacy function get_state')
+    kwargs = {k: v for k, v in {}.items() if v is not None}
+    return str(_legacy().get_state(**kwargs))
+
+
+@tool('legacy_post', 'Legacy function post from Dashboard.py.', params={"message": {"type": "string"}}, required=["message"], agent='Legacy tools')
+def legacy_post(ctx, message) -> str:
+    ctx.step('Running legacy function post')
+    kwargs = {k: v for k, v in {"message": message}.items() if v is not None}
+    return str(_legacy().post(**kwargs))
+
+
+@tool('legacy_status_badges', 'Legacy function status_badges from Dashboard.py.', params={"snap": {"type": "string"}, "status": {"type": "string"}}, required=["snap", "status"], agent='Legacy tools')
+def legacy_status_badges(ctx, snap, status) -> str:
+    ctx.step('Running legacy function status_badges')
+    kwargs = {k: v for k, v in {"snap": snap, "status": status}.items() if v is not None}
+    return str(_legacy().status_badges(**kwargs))
+
+
+@tool('legacy_offline_notice', 'Legacy function offline_notice from Dashboard.py.', params={"status": {"type": "string"}}, required=["status"], agent='Legacy tools')
+def legacy_offline_notice(ctx, status) -> str:
+    ctx.step('Running legacy function offline_notice')
+    kwargs = {k: v for k, v in {"status": status}.items() if v is not None}
+    return str(_legacy().offline_notice(**kwargs))
+
+
+@tool('legacy_render_message', 'Legacy function render_message from Dashboard.py.', params={"m": {"type": "string"}}, required=["m"], agent='Legacy tools')
+def legacy_render_message(ctx, m) -> str:
+    ctx.step('Running legacy function render_message')
+    kwargs = {k: v for k, v in {"m": m}.items() if v is not None}
+    return str(_legacy().render_message(**kwargs))
+
+
+@tool('legacy_task_cards', 'Legacy function task_cards from Dashboard.py.', params={"tasks": {"type": "string"}}, required=["tasks"], agent='Legacy tools')
+def legacy_task_cards(ctx, tasks) -> str:
+    ctx.step('Running legacy function task_cards')
+    kwargs = {k: v for k, v in {"tasks": tasks}.items() if v is not None}
+    return str(_legacy().task_cards(**kwargs))
+
+
+@tool('legacy_confirm_card', 'Legacy function confirm_card from Dashboard.py.', params={"confirm": {"type": "string"}}, required=["confirm"], agent='Legacy tools')
+def legacy_confirm_card(ctx, confirm) -> str:
+    ctx.step('Running legacy function confirm_card')
+    kwargs = {k: v for k, v in {"confirm": confirm}.items() if v is not None}
+    return str(_legacy().confirm_card(**kwargs))
+
+
+@tool('legacy_live_left', 'Legacy function live_left from Dashboard.py.', params={}, required=[], agent='Legacy tools')
+def legacy_live_left(ctx) -> str:
+    ctx.step('Running legacy function live_left')
+    kwargs = {k: v for k, v in {}.items() if v is not None}
+    return str(_legacy().live_left(**kwargs))
+
+
+@tool('legacy_command_form', 'Legacy function command_form from Dashboard.py.', params={}, required=[], agent='Legacy tools')
+def legacy_command_form(ctx) -> str:
+    ctx.step('Running legacy function command_form')
+    kwargs = {k: v for k, v in {}.items() if v is not None}
+    return str(_legacy().command_form(**kwargs))
+
+
+@tool('legacy_controls', 'Legacy function controls from Dashboard.py.', params={"snap": {"type": "string"}}, required=["snap"], agent='Legacy tools')
+def legacy_controls(ctx, snap) -> str:
+    ctx.step('Running legacy function controls')
+    kwargs = {k: v for k, v in {"snap": snap}.items() if v is not None}
+    return str(_legacy().controls(**kwargs))
+
+
+@tool('legacy_metrics_cards', 'Legacy function metrics_cards from Dashboard.py.', params={"snap": {"type": "string"}}, required=["snap"], agent='Legacy tools')
+def legacy_metrics_cards(ctx, snap) -> str:
+    ctx.step('Running legacy function metrics_cards')
+    kwargs = {k: v for k, v in {"snap": snap}.items() if v is not None}
+    return str(_legacy().metrics_cards(**kwargs))
+
+
+@tool('legacy_bars_html', 'Legacy function bars_html from Dashboard.py.', params={"apps": {"type": "string"}}, required=["apps"], agent='Legacy tools')
+def legacy_bars_html(ctx, apps) -> str:
+    ctx.step('Running legacy function bars_html')
+    kwargs = {k: v for k, v in {"apps": apps}.items() if v is not None}
+    return str(_legacy().bars_html(**kwargs))
+
+
+@tool('legacy_screen_time_tabs', 'Legacy function screen_time_tabs from Dashboard.py.', params={"snap": {"type": "string"}}, required=["snap"], agent='Legacy tools')
+def legacy_screen_time_tabs(ctx, snap) -> str:
+    ctx.step('Running legacy function screen_time_tabs')
+    kwargs = {k: v for k, v in {"snap": snap}.items() if v is not None}
+    return str(_legacy().screen_time_tabs(**kwargs))
+
+
+@tool('legacy_mic_panel', 'Legacy function mic_panel from Dashboard.py.', params={"snap": {"type": "string"}}, required=["snap"], agent='Legacy tools')
+def legacy_mic_panel(ctx, snap) -> str:
+    ctx.step('Running legacy function mic_panel')
+    kwargs = {k: v for k, v in {"snap": snap}.items() if v is not None}
+    return str(_legacy().mic_panel(**kwargs))
+
+
+@tool('legacy_latency_panel', 'Legacy function latency_panel from Dashboard.py.', params={"snap": {"type": "string"}}, required=["snap"], agent='Legacy tools')
+def legacy_latency_panel(ctx, snap) -> str:
+    ctx.step('Running legacy function latency_panel')
+    kwargs = {k: v for k, v in {"snap": snap}.items() if v is not None}
+    return str(_legacy().latency_panel(**kwargs))
+
+
+@tool('legacy_live_right', 'Legacy function live_right from Dashboard.py.', params={}, required=[], agent='Legacy tools')
+def legacy_live_right(ctx) -> str:
+    ctx.step('Running legacy function live_right')
+    kwargs = {k: v for k, v in {}.items() if v is not None}
+    return str(_legacy().live_right(**kwargs))
+
+
+@tool('legacy_main', 'Legacy function main from Dashboard.py.', params={}, required=[], agent='Legacy tools')
+def legacy_main(ctx) -> str:
+    ctx.step('Running legacy function main')
+    kwargs = {k: v for k, v in {}.items() if v is not None}
+    return str(_legacy().main(**kwargs))

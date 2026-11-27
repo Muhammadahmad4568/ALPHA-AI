@@ -1,0 +1,33 @@
+# ---- Alpha AI v4 (Windows 10/11, Python 3.10 - 3.12, 64-bit) ----
+
+# Speech: local STT (CPU, int8, no PyTorch) and cloud neural TTS
+faster-whisper>=1.0.3
+edge-tts>=6.1
+pygame>=2.5                 # only pygame.mixer is used (MP3 playback)
+sounddevice>=0.4.6
+numpy>=1.24
+SpeechRecognition>=3.10     # fallback recognizer if Whisper cannot load
+
+# PC control
+psutil>=5.9
+pyautogui>=0.9.54
+pygetwindow>=0.0.9
+send2trash>=1.8             # deletes go to the Recycle Bin
+pycaw                       # optional but recommended: exact mute/volume
+comtypes
+
+# AI providers (Gemini / Claude) and n8n are plain HTTPS
+requests>=2.31
+
+# Dashboard (FastAPI + Server-Sent Events; no Streamlit, no WebSocket)
+fastapi>=0.110
+uvicorn>=0.30
+
+# WhatsApp automation + web reader
+playwright>=1.44            # uses the Edge/Chrome already on Windows; `python -m playwright install chromium` is only a fallback
+beautifulsoup4>=4.12
+lxml>=5.0
+
+# ---- optional upgrades (not installed by default) ----
+# trafilatura>=1.9          better article extraction for the web reader
+# torch + speechbrain       neural voice-lock backend: set ALPHA_VOICE_BACKEND=speechbrain before `python main.py enroll`

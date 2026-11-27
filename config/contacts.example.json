@@ -1,0 +1,6 @@
+{
+  "_comment": "Copy to contacts.json. Names match case-insensitively. Use the international format with country code.",
+  "ali": "+923001234567",
+  "mom": "+923331234567",
+  "office team": {"chat": "Office Team"}
+}

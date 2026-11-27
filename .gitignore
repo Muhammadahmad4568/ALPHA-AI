@@ -1,0 +1,38 @@
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Environment secrets (keep .env.example)
+.env
+*.key
+*.pem
+secrets.json
+credentials.json
+
+# Python cache & build artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+
+# Logs, databases & temporary runtime data
+*.log
+*.db
+*.sqlite3
+data/*.log
+data/*.db
+data/*.sqlite3
+data/*.wav
+data/*.mp3
+data/temp/
+data/cache/
+
+# Editor & OS files
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
